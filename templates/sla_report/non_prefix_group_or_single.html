@@ -1,0 +1,63 @@
+{% load sla_report_extras %}
+{% for product in npgos_data %}
+
+   {% if product.group == "NA" %}
+    <li>
+      <div class="sla_grid">
+          <div class="sla_grid-item productlabel">{{ product }}</div>
+          {% include 'sla_report/setCellColor.html' with uptime=product.uptimeT %}
+          {% include 'sla_report/setCellColor.html' with uptime=product.uptime30 %}
+          {% include 'sla_report/setCellColor.html' with uptime=product.uptime90 %}
+          {% include 'sla_report/setCellColor.html' with uptime=product.uptime90d %}
+          {% include 'sla_report/setCellColor.html' with uptime=product.uptime365 %}
+          <!--
+          <div class="sla_grid-item gbutton">{{ product.uptimeT }}</div>
+          <div class="sla_grid-item ybutton">{{ product.uptime30 }}</div>
+          <div class="sla_grid-item rbutton">{{ product.uptime90 }}</div>
+          <div class="sla_grid-item qbutton">{{ product.uptime365 }}</div>
+          -->
+          <div class="sla_grid-item nbutton">{{ product.last_update }}</div>
+      </div>
+    </li>
+    {% elif product.name == gname %}
+    <li>
+      <input type="checkbox" checked>
+      <i></i>
+      <div class="sla_grid">
+          <div class="sla_grid-item productlabel">{{ product.group }}</div>
+          <div class="sla_grid-item grpbutton headercell_small">Uptime%<br/><div class="sub_header">This Month</div></div>
+          <div class="sla_grid-item grpbutton headercell_small">Uptime%<br/><div class="sub_header">Previous Month</div></div>
+          <div class="sla_grid-item grpbutton headercell_small">Uptime%<br/><div class="sub_header">Previous 3 Months</div></div>
+          <div class="sla_grid-item grpbutton headercell_small">Uptime%<br/><div class="sub_header">Past 90 days</div></div>
+          <div class="sla_grid-item grpbutton headercell_small">Uptime%<br/><div class="sub_header">Previous 12 Months</div></div>
+          <div class="sla_grid-item grpbutton headercell_small">Last Updated</div>
+      </div><br/>
+      <p class="sla_grid">
+
+    {% elif product.name != product.group %}
+        <span class="sla_grid-item subproductlabel">{{ product.name }}</span>
+          {% include 'sla_report/setGrpCellColor.html' with uptime=product.uptimeT %}
+          {% include 'sla_report/setGrpCellColor.html' with uptime=product.uptime30 %}
+          {% include 'sla_report/setGrpCellColor.html' with uptime=product.uptime90 %}
+          {% include 'sla_report/setGrpCellColor.html' with uptime=product.uptime90d %} 
+          {% include 'sla_report/setGrpCellColor.html' with uptime=product.uptime365 %}
+        <!--
+        <span class="sla_grid-item gbutton">{{ product.uptimeT }}</span>
+        <span class="sla_grid-item ybutton">{{ product.uptime30 }}</span>
+        <span class="sla_grid-item rbutton">{{ product.uptime90 }}</span>
+        <span class="sla_grid-item qbutton">{{ product.uptime365 }}</span>
+        -->
+        <span class="sla_grid-item nbutton">{{ product.last_update }}</span>
+      {% if forloop.counter == npgos_data|length %}
+      </p>
+    </li>
+      {% else %}
+         {% with next_element=npgos_data|next:forloop.counter0 %}
+         {% if product.group != next_element.group %}
+      </p>
+    </li>
+        {% endif %}
+        {% endwith %}
+      {% endif %}
+   {% endif %}
+{% endfor %}

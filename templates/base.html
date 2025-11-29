@@ -1,0 +1,25 @@
+{% include "header.html" %}
+
+<body>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/hello">Hello</a>
+        <a href="/sla_report">SLA Report</a>
+        <!-- <div style="float:right;", class="dropdown">
+            {% if user.is_authenticated %}
+            <button class="dropbtn">{{ user.email }}</button>
+            <div class="dropdown-content" id="dropdownMenu">
+                <form action="/accounts/logout/" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Logout">
+                </form>
+            </div>
+            {% else %}
+            <a href="/accounts/login/">Login</a>
+            {% endif %}
+        </div> -->
+    </div>
+{% block content %}{% endblock %}
+</body>
+
+{% include "footer.html" %}

@@ -1,0 +1,9 @@
+      {% if uptime > 99.949 %}
+        <div class="sla_grid-item gbutton">{{ uptime }}</div>
+      {% elif uptime > 99.899 %}
+        <div class="sla_gr5d-item ybutton">{{ uptime }}</div>
+      {% elif uptime == 0.00 %}
+        <div class="sla_grid-item qbutton"> N/A </div>
+      {% else %}
+        <div class="sla_grid-item rbutton">{{ uptime }}</div>
+      {% endif %}

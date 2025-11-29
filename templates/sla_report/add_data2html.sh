@@ -1,0 +1,1 @@
+sed -i -e's/99.99/{{ product.uptimeT }}/g; s/88.88/{{ product.uptime30 }}/g; s/77.77/{{ product.uptime90 }}/g; s/N\/A/{{ product.uptime365 }}/g; s/long time ago/{{ product.last_update }}/g' summary.html

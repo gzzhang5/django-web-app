@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load sla_report_extras %}
+{% block content %}
+    <div class="subHeaders">
+        SLA Report from Synthetic monitors in New Relic</br>
+    </div>
+
+    <div>
+
+  <ul>
+    <!-- This is the header row  -->
+    <!--
+    <h3 class="sla_grid">
+        <div class="sla_grid-item headercell1">Service</div>
+        <div class='sla_grid-item headercell'>Uptime%<br/><div class="sub_header">This Month</div></div>
+        <div class='sla_grid-item headercell'>Uptime%<br/><div class="sub_header">Previous Month</div></div>
+        <div class='sla_grid-item headercell'>Uptime%<br/><div class="sub_header">Previous 3 Months</div></div>
+        <div class='sla_grid-item headercell'>Uptime%<br/><div class="sub_header">Previous 12 Months</div></div>
+        <div class='sla_grid-item headercell_small'>Last Updated</div>
+    </h3>
+    -->
+ 
+    <!-- non prefix group -->
+    {% include 'sla_report/non_prefix_group_or_single.html' with npgos_data=view.data.usCertCentral gname='1US CertCentral' %}
+    {% include 'sla_report/non_prefix_group_or_single.html' with npgos_data=view.data.nl2cc gname='1EU CertCentral' %}
+    {% include 'sla_report/non_prefix_group_or_single.html' with npgos_data=view.data.magnum gname='1Magnum' %}
+    {% include 'sla_report/non_prefix_group_or_single.html' with npgos_data=view.data.gp2ra gname='1US RA Services' %}
+    {% include 'sla_report/non_prefix_group_or_single.html' with npgos_data=view.data.nl2ra gname='1Netherlands RA Services' %}
+    {% include 'sla_report/non_prefix_group_or_single.html' with npgos_data=view.data.timestamp gname='1Timestamp Services' %}
+    {% include 'sla_report/non_prefix_group_or_single.html' with npgos_data=view.data.ctlogs gname='1CT Logs' %}
+    {% include 'sla_report/non_prefix_group_or_single.html' with npgos_data=view.data.ocsp gname='1OCSP' %}
+    {% include 'sla_report/non_prefix_group_or_single.html' with npgos_data=view.data.nl2ch2adss gname='1EU ADSS' %}  
+   
+    <!-- like  DC1 groups --> 
+    {% include 'sla_report/prefix_group_or_single.html' with pgos_data=view.data.gp2ProdDC1 %}
+    {% include 'sla_report/prefix_group_or_single.html' with pgos_data=view.data.jp2ProdDC1 %}
+    {% include 'sla_report/prefix_group_or_single.html' with pgos_data=view.data.prodDC1 %}
+    {% include 'sla_report/prefix_group_or_single.html' with pgos_data=view.data.demoDC1 %}
+
+    <!-- Not like  DC1 groups and Not like certcentral -->
+    {% include 'sla_report/non_prefix_group_or_single.html' with npgos_data=view.data.products gname='1Other Services' %}
+
+  </ul>
+
+    </div>
+{% endblock %}
