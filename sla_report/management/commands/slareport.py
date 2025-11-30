@@ -33,15 +33,15 @@ class Command(BaseCommand):
 
         timestamp = timezone.now()
 
-        if settings.PURGE_OLD_RECORDS:
-            ts = timestamp - timedelta(settings.PURGE_OLDER_THAN)
-            obj = Sla_Report.objects.filter(last_update__lt=ts).delete()
+        #if settings.PURGE_OLD_RECORDS:
+        #    ts = timestamp - timedelta(settings.PURGE_OLDER_THAN)
+        #    obj = Sla_Report.objects.filter(last_update__lt=ts).delete()
 
         #self._get_info(kwargs['target'], timestamp)
         self._get_data(timestamp)
 
     def _get_data(self, timestamp):
-        with open("/opt/sre_reports/sla_report/sla_report.csv", 'r') as file:
+        with open("/app/sla_report/sla_report.csv", 'r') as file:
             csvreader = csv.reader(file)
             header = next(csvreader)
             header1 = next(csvreader)

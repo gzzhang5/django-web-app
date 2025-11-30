@@ -1,20 +1,10 @@
-# Dockerfile
-FROM python:3.11-slim
+FROM python:3-alpine
 
-# Set environment variables
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
+ENV MAKEFLAGS="-j$(nproc)"
 
-# Set work directory
 WORKDIR /app
 
-# Install dependencies
-COPY requirements.txt /app/
-RUN pip install --upgrade pip
-
-
-# Copy project
-COPY . /app/
+COPY . /app
 
 # build dependencies
 RUN apk add --no-cache --virtual .build-deps build-base libffi-dev postgresql-dev \
@@ -29,4 +19,11 @@ RUN apk add --no-cache libpq openssl jq curl
 RUN openssl req -nodes -x509 -newkey rsa:2048 -keyout /etc/ssl/private/selfsigned.key -out /etc/ssl/certs/selfsigned.crt \
     -outform PEM -days 7200 -subj "/CN=sre_reports/C=US/ST=WA/L=Somewhere City/O=Self-Signed Inc."
 
-RUN pip install -r requirements.txt
+RUN adduser -u 978 -h /app -g 'python app user' -s /sbin/nologin -D python
+    # && chown -R python:python /app
+
+#EXPOSE 8080
+
+# USER python
+
+CMD ["/app/start.sh"]
