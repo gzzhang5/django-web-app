@@ -59,7 +59,7 @@ class Command(BaseCommand):
                 #for key in results:
                 #    print(results[key])
 
-                obj, created = Sla_Report.objects.update_or_create(name=product, defaults = (results))
+                obj, created = Sla_Report.objects.update_or_create(name=product, defaults=results)
                 if created:
                     self.stdout.write(self.style.SUCCESS('Added new product "{}" to sla_report table'.format(product)))
 

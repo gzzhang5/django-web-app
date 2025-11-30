@@ -1,4 +1,8 @@
+service,uptimeT,uptime30,uptime90,uptime90d,uptime365,group
+
 hotspot_sf,100.000,99.3,99.95,99.96,99.98,hotspot
 hotspot_la,100.000,99.3,99.95,99.96,99.98,hotspot
 billing_us,100.000,99.3,99.95,99.96,99.98,billing
 subscription_us,100.000,99.3,99.95,99.96,99.98,subscription
+billing_jp,100.000,99.3,99.95,99.96,99.98,billing
+subscription_jp,100.000,99.3,99.95,99.96,99.98,subscription
