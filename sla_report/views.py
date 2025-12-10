@@ -7,15 +7,13 @@ class sla_report(TemplateView):
     title = 'Summary'
 
     def data(self):
-        filter = 'hotspot%'
+        filter = '%hotspot%'
         hotspot = Sla_Report.objects.raw('SELECT * FROM sla_report WHERE "group" LIKE %s ORDER BY name', [filter])
-        filter1 = 'billing%' 
+        filter1 = '%billing%' 
         billing = Sla_Report.objects.raw('SELECT * FROM sla_report WHERE "group" LIKE %s ORDER BY name', [filter1])       
-        filter2 = 'subscription%'
+        filter2 = '%subscription%'
         subscription = Sla_Report.objects.raw('SELECT * FROM sla_report WHERE "group" LIKE %s ORDER BY name', [filter2])
 
-        products = Sla_Report.objects.raw('SELECT * FROM sla_report WHERE "group" LIKE %s ORDER BY name', [filter12])
- 
         context = {
             'hotspot': hotspot,
             'billing': billing,
