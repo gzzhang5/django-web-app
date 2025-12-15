@@ -17,7 +17,7 @@ RUN apk add --no-cache libpq openssl jq curl
 #     && chmod +x /usr/local/bin/wait-for
 
 RUN openssl req -nodes -x509 -newkey rsa:2048 -keyout /etc/ssl/private/selfsigned.key -out /etc/ssl/certs/selfsigned.crt \
-    -outform PEM -days 7200 -subj "/CN=sre_reports/C=US/ST=WA/L=Somewhere City/O=Self-Signed Inc."
+    -outform PEM -days 7200 -subj "/CN=sla_report/C=US/ST=WA/L=Somewhere City/O=Self-Signed Inc."
 
 RUN adduser -u 978 -h /app -g 'python app user' -s /sbin/nologin -D python
     # && chown -R python:python /app

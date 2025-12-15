@@ -96,6 +96,6 @@ My application is a Dockerized web application built with Django.
     │   ├── navigation.css
     │   └── tables.css
     └── js
-        └── sre_reports.js
+        └── sla_report.js
 
 19 directories, 62 files
