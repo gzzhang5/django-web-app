@@ -1,29 +1,39 @@
-This project collects data from New Relic via API, customizes it, stores it in local database then prosents it in the webapp
+This project collects data from New Relic via API, customizes it, stores it in a local database then presents it in the webapp
 
-The project directory tree:
-tree -L 4
+My application is a Dockerized web application built with Django.
+
+---
+
+## Tech Stack
+- Python 3.12
+- Django 4.x
+- PostgreSQL
+- Docker
+- Docker Compose
+
+---
+
+## Project Structure
+
 .
 ├── docker-compose.yml
 ├── Dockerfile
 ├── Dockerfile_basic
-├── helloworld
-│   ├── admin.py
-│   ├── apps.py
-│   ├── __init__.py
-│   ├── migrations
-│   │   └── __init__.py
-│   ├── models.py
-│   ├── tests.py
-│   ├── urls.py
-│   └── views.py
 ├── manage.py
 ├── myproject
 │   ├── asgi.py
 │   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-314.pyc
+│   │   ├── settings.cpython-314.pyc
+│   │   ├── urls.cpython-314.pyc
+│   │   ├── views.cpython-314.pyc
+│   │   └── wsgi.cpython-314.pyc
 │   ├── settings.py
 │   ├── urls.py
 │   ├── views.py
 │   └── wsgi.py
+├── README.txt
 ├── requirements.txt
 ├── sla_report
 │   ├── admin.py
@@ -32,16 +42,31 @@ tree -L 4
 │   ├── management
 │   │   ├── commands
 │   │   │   ├── __init__.py
+│   │   │   ├── __pycache__
 │   │   │   └── slareport.py
-│   │   └── __init__.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       └── __init__.cpython-314.pyc
 │   ├── migrations
 │   │   ├── 0001_initial.py
-│   │   └── __init__.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── 0001_initial.cpython-314.pyc
+│   │       └── __init__.cpython-314.pyc
 │   ├── models.py
-│   ├── README.txt
+│   ├── __pycache__
+│   │   ├── admin.cpython-314.pyc
+│   │   ├── apps.cpython-314.pyc
+│   │   ├── __init__.cpython-314.pyc
+│   │   ├── models.cpython-314.pyc
+│   │   ├── urls.cpython-314.pyc
+│   │   └── views.cpython-314.pyc
 │   ├── sla_report.csv
 │   ├── templatetags
 │   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-314.pyc
+│   │   │   └── sla_report_extras.cpython-314.pyc
 │   │   └── sla_report_extras.py
 │   ├── tests.py
 │   ├── urls.py
@@ -73,5 +98,4 @@ tree -L 4
     └── js
         └── sre_reports.js
 
-16 directories, 54 files
-
+19 directories, 62 files
