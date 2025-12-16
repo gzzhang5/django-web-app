@@ -24,7 +24,7 @@
       <input type="checkbox" checked>
       <i></i>
       <div class="sla_grid">
-          <div class="sla_grid-item productlabel">{{ product.group }}</div>
+          <div class="sla_grid-item productlabel">{{ product.group|slice:"1:" }}</div>
           <div class="sla_grid-item grpbutton headercell_small">Uptime%<br/><div class="sub_header">This Month</div></div>
           <div class="sla_grid-item grpbutton headercell_small">Uptime%<br/><div class="sub_header">Previous Month</div></div>
           <div class="sla_grid-item grpbutton headercell_small">Uptime%<br/><div class="sub_header">Previous 3 Months</div></div>
